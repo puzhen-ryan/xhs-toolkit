@@ -1,101 +1,62 @@
 # 📕 XHS Toolkit — 小红书 AI 自媒体工具包
 
-一套用于制作、截图、发布小红书图文笔记的自动化工具链。
+用 HTML/CSS 制作精美卡片式小红书笔记，Puppeteer 自动截图和发布。
 
-## 特点
+## ✨ 效果展示
 
-- 🎨 **HTML → JPG 卡片生成**：用 HTML/CSS 写卡片，Puppeteer 截图，精确控制排版
-- 📸 **一键截图**：`snap.js` 批量渲染所有 slide
-- 🚀 **自动发布**：`publish.js` 自动上传图片、填写标题正文、点击发布
-- 🎯 **浅色笔记风模板**：暖白底 + 白卡片 + 彩色左边框 + 轻阴影
-- 💬 **评论自动回复**：通知页逐条回复评论
+<p align="center">
+  <img src="examples/deepseek-claude/output/slide1.jpg" width="200" />
+  <img src="examples/deepseek-claude/output/slide3.jpg" width="200" />
+  <img src="examples/deepseek-claude/output/slide5.jpg" width="200" />
+</p>
 
-## 目录结构
+> Post #17「DeepSeek偷师Claude？」— 紫色系浅色笔记风
 
-```
-xhs-toolkit/
-├── README.md              # 本文件
-├── GUIDE.md               # 运营指南（排版/内容/发布/踩坑）
-├── templates/             # HTML 模板
-│   ├── cover.html         # 封面模板（超大艺术字）
-│   ├── content.html       # 内容页模板（卡片式）
-│   └── opinion.html       # 观点页模板（Bear观点）
-├── scripts/
-│   ├── snap.js            # 截图脚本（HTML → JPG）
-│   ├── publish.js         # 发布脚本（上传+填写+发布）
-│   ├── reply.js           # 评论回复脚本
-│   └── config.js          # 配置（浏览器路径、CDP端口等）
-├── examples/              # 示例帖子
-│   └── deepseek-claude/   # Post #17 完整示例
-└── .gitignore
-```
+## 🎨 设计风格
 
-## 快速开始
+**浅色笔记风** — 暖白底 `#FDF8F3` + 白色卡片 + 彩色左边框 + 轻阴影
 
-### 1. 安装依赖
+每篇帖子一个主题色，通过 CSS 变量 `--accent` 一键切换：
+
+| 主题 | 色值 | 效果 |
+|------|------|------|
+| 紫色 | `#7C3AED` | 科技/深度分析 |
+| 橙色 | `#FF6B00` | 热点/数据 |
+| 红色 | `#E74C3C` | 警告/争议 |
+| 蓝色 | `#2563EB` | 产品/教程 |
+
+## 📦 包含什么
+
+| 文件 | 说明 |
+|------|------|
+| `templates/cover.html` | 封面模板 — 超大艺术字 |
+| `templates/content.html` | 内容页模板 — 卡片式，多种变体 |
+| `templates/opinion.html` | 观点页模板 — Bear观点/总结 |
+| `scripts/snap.js` | HTML → JPG 批量截图 |
+| `scripts/publish.js` | 自动上传 + 填写 + 一键发布 |
+| `scripts/reply.js` | 评论自动回复 |
+| `GUIDE.md` | 运营指南 & 踩坑记录 |
+| `SKILL.md` | Agent 操作手册（给 AI Agent 用） |
+
+## 🚀 快速开始
 
 ```bash
 npm install
+
+# 截图
+node scripts/snap.js --dir ./my-post
+
+# 发布（需浏览器已登录小红书 + CDP调试模式）
+node scripts/publish.js --dir ./my-post --title "你的标题" --desc "正文"
 ```
 
-### 2. 配置浏览器
-
-编辑 `scripts/config.js`，设置你的 Edge/Chrome 路径和 CDP 端口。
-
-需要先启动浏览器并开启远程调试：
-```bash
-# Edge
-"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" --remote-debugging-port=9222
-
-# Chrome
-"C:\Program Files\Google\Chrome\Application\chrome.exe" --remote-debugging-port=9222
-```
-
-### 3. 制作卡片
-
-在项目目录下创建 `slide1.html` ~ `slideN.html`，参考 `templates/` 里的模板。
-
-### 4. 截图
-
-```bash
-node scripts/snap.js --dir ./my-post --slides 5
-```
-
-### 5. 发布
-
-先在浏览器中登录小红书创作者中心，然后：
-```bash
-node scripts/publish.js --dir ./my-post --title "你的标题" --desc "正文内容"
-```
-
-## 设计规范
-
-| 项目 | 规范 |
-|------|------|
-| 尺寸 | 1080 × 1920px（9:16 竖屏） |
-| 字体 | Noto Sans SC（Black 900 / Bold 700） |
-| 封面标题 | 56-110px |
-| 内页标题 | 42-56px |
-| 正文 | 24-28px（不低于 24px） |
-| 背景色 | `#FDF8F3`（暖白） |
-| 卡片 | 白底 + `border-radius: 20px` + 彩色左边框 |
-
-## ⚠️ 踩坑记录
-
-详见 [GUIDE.md](./GUIDE.md)，核心要点：
-
-- **标题限制 20 字**！超了发布按钮无效但不报错
-- **多图上传必须一次性**：`input.uploadFile(...allFiles)`，逐张传会覆盖
-- **发布页默认是视频 tab**，要先点"上传图文"
-- **PowerShell `Set-Content` 会破坏 UTF-8**，用 Node.js `fs.writeFileSync` 代替
-- **Google Fonts `@import` 会让 headless 卡死**（无网络）
-- **发布成功标志**：URL 含 `published=true`
+详细用法和注意事项见 [SKILL.md](./SKILL.md)。
 
 ## 技术栈
 
-- Node.js + Puppeteer-core
-- Edge/Chrome headless（截图）
-- Edge + CDP（发布，需已登录小红书）
+- Node.js + [Puppeteer-core](https://pptr.dev/)
+- Edge / Chrome（headless 截图 + CDP 发布）
+- 纯 HTML/CSS 卡片（无框架依赖）
 
 ## License
 
