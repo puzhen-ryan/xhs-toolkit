@@ -61,14 +61,15 @@ async function main() {
     });
     await new Promise(r => setTimeout(r, 500));
 
-    const outPath = path.join(outDir, `slide${i}.${config.screenshot.type}`);
+    const ext = config.screenshot.ext || config.screenshot.type;
+    const outPath = path.join(outDir, `slide${i}.${ext}`);
     await page.screenshot({
       path: outPath,
       type: config.screenshot.type,
       quality: config.screenshot.quality,
     });
 
-    console.log(`  ✅ slide${i}.${config.screenshot.type}`);
+    console.log(`  ✅ slide${i}.${ext}`);
     await page.close();
   }
 

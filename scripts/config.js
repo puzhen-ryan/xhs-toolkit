@@ -14,6 +14,7 @@ module.exports = {
     width: 1080,
     height: 1920,
     type: 'jpeg',
+    ext: 'jpg',   // 文件扩展名（publish.js 按此查找）
     quality: 90,
   },
 
