@@ -58,6 +58,10 @@ node scripts/publish.js --dir ./my-post --title "你的标题" --desc "正文"
 - Edge / Chrome（headless 截图 + CDP 发布）
 - 纯 HTML/CSS 卡片（无框架依赖）
 
+## 关注账号
+
+![qr_code](./assets/xhs.png)
+
 ## License
 
 MIT
