@@ -1,0 +1,61 @@
+<!--
+  内容页模板 — 浅色笔记风（卡片式）
+  
+  使用方法：
+  1. 修改 --accent 主题色
+  2. 修改 .page-title 页面标题
+  3. 复制/修改 .card 卡片块（可用 .warn / .info 变体）
+  4. 用 <span class="em"> 高亮关键文字
+-->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+:root { --accent: #7C3AED; --bg: #FDF8F3; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 1080px; height: 1920px; background: var(--bg); font-family: 'Noto Sans SC', sans-serif; padding: 70px; }
+.page-title { font-size: 44px; font-weight: 900; color: var(--accent); margin-bottom: 40px; border-left: 8px solid var(--accent); padding-left: 20px; }
+.card { background: #fff; border-radius: 20px; padding: 36px; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-left: 6px solid var(--accent); }
+.card-title { font-size: 30px; font-weight: 900; color: #1a1a1a; margin-bottom: 14px; }
+.card-text { font-size: 26px; font-weight: 700; color: #444; line-height: 1.7; }
+.em { color: var(--accent); font-weight: 900; }
+
+/* 变体: 警告卡片 */
+.card.warn { border-left-color: #F59E0B; }
+.card.warn .card-title { color: #D97706; }
+
+/* 变体: 信息卡片 */
+.card.info { border-left-color: #2563EB; }
+.card.info .card-title { color: #2563EB; }
+
+/* 变体: 危险卡片 */
+.card.danger { border-left-color: #DC2626; }
+.card.danger .card-title { color: #DC2626; }
+
+/* 数据行 */
+.data-row { display: flex; align-items: center; padding: 16px 24px; background: #fff; border-radius: 14px; margin-bottom: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+.data-label { flex: 1; font-size: 26px; font-weight: 800; color: #333; }
+.data-value { font-size: 28px; font-weight: 900; color: var(--accent); }
+
+.footer { position: absolute; bottom: 40px; left: 70px; font-size: 20px; color: #bbb; }
+</style></head><body>
+<div class="page-title">📰 页面标题</div>
+
+<div class="card">
+  <div class="card-title">🎯 卡片标题</div>
+  <div class="card-text">
+    这里是正文内容。用 <span class="em">高亮标记</span> 强调关键信息。<br><br>
+    支持多段落排版。
+  </div>
+</div>
+
+<div class="card warn">
+  <div class="card-title">⚠️ 警告卡片</div>
+  <div class="card-text">黄色边框的警告样式。</div>
+</div>
+
+<div class="card danger">
+  <div class="card-title">🚫 危险卡片</div>
+  <div class="card-text">红色边框的危险样式。</div>
+</div>
+
+<div class="footer">小红书 @朴真 · Bear 🐻</div>
+</body></html>

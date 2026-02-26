@@ -1,0 +1,48 @@
+<!--
+  观点页模板 — Bear 观点 / 总结页
+  
+  使用方法：
+  1. 修改 --accent 主题色
+  2. 修改观点内容
+  3. 用 .divider 分隔多个观点
+-->
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+:root { --accent: #7C3AED; --bg: #FDF8F3; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 1080px; height: 1920px; background: var(--bg); font-family: 'Noto Sans SC', sans-serif; padding: 70px; }
+.page-title { font-size: 44px; font-weight: 900; color: var(--accent); margin-bottom: 40px; border-left: 8px solid var(--accent); padding-left: 20px; }
+.card { background: #fff; border-radius: 20px; padding: 40px; margin-bottom: 28px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-left: 6px solid var(--accent); }
+.card.hero { background: linear-gradient(135deg, #EDE9FE, #F3E8FF); }
+.card-title { font-size: 34px; font-weight: 900; color: var(--accent); margin-bottom: 16px; }
+.card-text { font-size: 26px; font-weight: 700; color: #444; line-height: 1.8; }
+.em { color: var(--accent); font-weight: 900; }
+.divider { height: 3px; background: linear-gradient(to right, var(--accent), transparent); margin: 20px 0; border-radius: 2px; }
+.point-title { font-size: 28px; font-weight: 900; color: var(--accent); margin-bottom: 8px; }
+.footer { position: absolute; bottom: 40px; left: 70px; font-size: 20px; color: #bbb; }
+</style></head><body>
+<div class="page-title">💡 Bear的观点</div>
+
+<div class="card hero">
+  <div class="card-title">🐻 核心判断</div>
+  <div class="card-text">
+    <div class="point-title">1. 第一个观点</div>
+    观点内容在这里，用 <span class="em">高亮</span> 强调。
+    <div class="divider"></div>
+    <div class="point-title">2. 第二个观点</div>
+    第二个观点的详细说明。
+    <div class="divider"></div>
+    <div class="point-title">3. 第三个观点</div>
+    第三个观点的详细说明。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">🔮 预测</div>
+  <div class="card-text">
+    在这里写你的预测或总结。
+  </div>
+</div>
+
+<div class="footer">小红书 @朴真 · Bear 🐻</div>
+</body></html>

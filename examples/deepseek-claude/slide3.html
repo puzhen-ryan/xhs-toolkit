@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 1080px; height: 1920px; background: #FDF8F3; font-family: 'Noto Sans SC', sans-serif; padding: 70px; }
+.page-title { font-size: 44px; font-weight: 900; color: #7C3AED; margin-bottom: 40px; border-left: 8px solid #7C3AED; padding-left: 20px; }
+.card { background: #fff; border-radius: 20px; padding: 36px; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-left: 6px solid #7C3AED; }
+.card-title { font-size: 30px; font-weight: 900; color: #1a1a1a; margin-bottom: 14px; }
+.card-text { font-size: 25px; font-weight: 700; color: #444; line-height: 1.7; }
+.em { color: #7C3AED; font-weight: 900; }
+.red { color: #DC2626; font-weight: 900; }
+.section { font-size: 28px; font-weight: 900; color: #7C3AED; margin: 30px 0 20px; }
+.table-row { display: flex; align-items: center; padding: 16px 24px; background: #fff; border-radius: 14px; margin-bottom: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+.table-label { flex: 1; font-size: 26px; font-weight: 800; color: #333; }
+.table-val { font-size: 28px; font-weight: 900; }
+.purple { color: #7C3AED; }
+.orange { color: #F59E0B; }
+.gray { color: #999; }
+.footer { position: absolute; bottom: 40px; left: 70px; font-size: 20px; color: #bbb; }
+</style></head><body>
+<div class="page-title">🧠 什么是模型蒸馏？</div>
+
+<div class="card">
+  <div class="card-title">📖 通俗解释</div>
+  <div class="card-text">
+    想象你是学生，Claude是顶级学霸。<br><br>
+    你不看课本，<span class="em">直接抄学霸的答案</span>来训练自己——这就是蒸馏。<br><br>
+    学霸（Claude）花了大量时间理解知识，你只需要<span class="em">模仿他的输出</span>就能学到七八成。
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">⚖️ 争议焦点</div>
+  <div class="card-text">
+    <span class="red">Anthropic立场：</span>这是知识产权侵犯。Claude的推理能力是我们投入数十亿美元训练出来的。<br><br>
+    <span class="purple">DeepSeek立场：</span>蒸馏是学术界公开技术，我们的创新在于架构和训练效率。<br><br>
+    <span class="gray">行业共识：</span>蒸馏本身合法，但<span class="em">未经授权大规模使用商业API输出</span>来训练是灰色地带。
+  </div>
+</div>
+
+<div class="section">📊 SWE-Bench 对比（泄漏数据）</div>
+<div class="table-row"><span class="table-label">🥇 DeepSeek V4</span><span class="table-val purple">83.7%</span></div>
+<div class="table-row"><span class="table-label">🥈 Claude Opus 4.5</span><span class="table-val orange">80.9%</span></div>
+<div class="table-row"><span class="table-label">🥉 GPT-5.2</span><span class="table-val gray">80.0%</span></div>
+
+<div class="footer">小红书 @朴真 · Bear 🐻</div>
+</body></html>

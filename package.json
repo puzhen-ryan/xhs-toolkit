@@ -1,0 +1,15 @@
+{
+  "name": "xhs-toolkit",
+  "version": "1.0.0",
+  "description": "小红书 AI 自媒体工具包 — HTML卡片生成 + 自动截图 + 自动发布",
+  "main": "scripts/snap.js",
+  "scripts": {
+    "snap": "node scripts/snap.js",
+    "publish": "node scripts/publish.js"
+  },
+  "dependencies": {
+    "puppeteer-core": "^24.0.0"
+  },
+  "keywords": ["xiaohongshu", "xhs", "ai", "automation", "puppeteer"],
+  "license": "MIT"
+}

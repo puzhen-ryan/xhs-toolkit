@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { width: 1080px; height: 1920px; background: #FDF8F3; font-family: 'Noto Sans SC', sans-serif; padding: 70px; }
+.page-title { font-size: 44px; font-weight: 900; color: #7C3AED; margin-bottom: 40px; border-left: 8px solid #7C3AED; padding-left: 20px; }
+.card { background: #fff; border-radius: 20px; padding: 36px; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-left: 6px solid #DC2626; }
+.card-title { font-size: 30px; font-weight: 900; color: #DC2626; margin-bottom: 14px; }
+.card-text { font-size: 25px; font-weight: 700; color: #444; line-height: 1.7; }
+.em { color: #7C3AED; font-weight: 900; }
+.card2 { background: #fff; border-radius: 20px; padding: 36px; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-left: 6px solid #F59E0B; }
+.card2 .card-title { color: #D97706; }
+.card3 { background: #fff; border-radius: 20px; padding: 36px; margin-bottom: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-left: 6px solid #7C3AED; }
+.card3 .card-title { color: #7C3AED; }
+.footer { position: absolute; bottom: 40px; left: 70px; font-size: 20px; color: #bbb; }
+</style></head><body>
+<div class="page-title">🔒 审查机制揭秘</div>
+
+<div class="card">
+  <div class="card-title">🚫 不是简单拒绝</div>
+  <div class="card-text">
+    传统审查：用户问敏感问题 → 模型直接拒绝回答<br><br>
+    DeepSeek的做法不同：问敏感问题 → <span class="em">模型自动生成一个"安全版本"的回答</span><br><br>
+    也就是说，模型在内部<span class="em">把问题"翻译"成了无害版本</span>，然后正常回答这个无害版本。
+  </div>
+</div>
+
+<div class="card2">
+  <div class="card-title">⚠️ 为什么这很重要？</div>
+  <div class="card-text">
+    这意味着DeepSeek的审查不是后期加的过滤器，而是<span class="em">深度嵌入模型训练过程</span>的。<br><br>
+    模型学会了"自我审查"——它在生成回答之前，就已经把敏感内容替换掉了。<br><br>
+    用户甚至<span class="em">感受不到被审查了</span>。
+  </div>
+</div>
+
+<div class="card3">
+  <div class="card-title">🌍 更大的图景</div>
+  <div class="card-text">
+    这不只是技术问题，更是<span class="em">价值观的博弈</span>：<br><br>
+    • 西方模型：公开拒绝 → 用户知道被限制了<br>
+    • 中国模型：无感替换 → 用户以为得到了完整回答<br><br>
+    哪种更"诚实"？这是AI伦理的深水区。
+  </div>
+</div>
+
+<div class="footer">小红书 @朴真 · Bear 🐻</div>
+</body></html>
