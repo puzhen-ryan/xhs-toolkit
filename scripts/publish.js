@@ -120,21 +120,15 @@ async function main() {
   console.log(`  ✅ 标题: "${opts.title}"`);
   await sleep(1000);
 
-  // 填写正文
+  // 填写正文（逐行输入以触发标签识别）
   if (desc) {
-    await page.evaluate((d) => {
-      const el = document.querySelector('[contenteditable="true"]') || document.querySelector('#post-textarea');
-      if (el) {
-        el.focus();
-        if (el.tagName === 'TEXTAREA') {
-          el.value = d;
-          el.dispatchEvent(new Event('input', { bubbles: true }));
-        } else {
-          el.innerHTML = d.replace(/\n/g, '<br>');
-          el.dispatchEvent(new Event('input', { bubbles: true }));
-        }
+    const lines = desc.split('\n');
+    for (let i = 0; i < lines.length; i++) {
+      await page.type('[contenteditable="true"], #post-textarea', lines[i], { delay: 10 });
+      if (i < lines.length - 1) {
+        await page.keyboard.press('Enter');
       }
-    }, desc);
+    }
     console.log('  ✅ 正文已填写');
     await sleep(2000);
   }
